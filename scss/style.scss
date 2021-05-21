@@ -1,0 +1,474 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:200,300,400,500,600,700|Roboto:100,300,400,500,700&display=swap");
+
+/***************
+Variables
+***************/
+
+$fontText: 'Roboto', sans-serif;
+$fontHeader: 'Josefin Sans', sans-serif;
+$red: #FF2020;
+$lightGray: #cbcbd8;
+$headerBackground: #F0F0F2;
+$white: #fff;
+$black: #0B1C39;
+$gray: #4A4A4B;
+$buttonGray: #4A4A4B;
+$transition: .4s ease;
+$boxShadow: 0 5px 5px $lightGray;
+$padding: 150px 0;
+
+/***************
+Basic styles
+***************/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: $fontText;
+    position: relative;
+}
+
+h1, h2, h3, h4 ,h5, h6 {
+    font-family: $fontHeader;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $black;
+    &:hover {
+        color: $red;
+        transition: $transition;
+    }
+}
+
+/***************
+Mixins
+***************/
+
+@mixin hot {
+    position: relative;
+    top: -20px;
+    font-size: .6rem;
+    left: -280px;
+    padding: 5px;
+    background-color: $red;
+    color: $white;
+    text-align: center;
+    letter-spacing: 2px;
+    box-shadow: $boxShadow;
+    border-radius: 8px;
+    height: 20px;
+    width: 40px;
+}
+
+@mixin flexCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+}
+
+@mixin btn {
+    text-transform: uppercase;
+    background-color: $gray;
+    padding: 15px 30px;
+    border: none;
+    color: $white;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: $fontHeader;
+}
+
+@mixin btn-hover {
+    background-color: $red;
+    cursor: pointer;
+    transition: $transition;
+}
+
+@mixin btnRed {
+    background-color: $red;
+    color: $red;
+    font-size: 1rem;
+    padding: 15px 30px;
+}
+
+/**** H O M E   P A G E ****/
+
+/***************
+Navigation
+***************/
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    position: fixed;
+    background-color: $white;
+    height: 105px;
+    width: 100%;
+    box-shadow: 0 5px 2px $lightGray;
+    ul {
+        display: flex;
+        li {
+            a {
+                font-family: $fontHeader;
+                font-weight: 600;
+                padding: 40px 20px;
+            }
+        }
+        li:last-child {
+            @include hot;
+            p {
+                margin-top: -2px;
+            }
+        }
+    }
+    .icons {
+        i {
+            padding: 40px 20px;
+        }
+    }
+}
+
+/***************
+Header
+***************/
+
+header {
+    background-color: $headerBackground;
+    .container {
+        display: flex;
+        .col:first-child {
+            flex: 2;
+            @include flexCenter;
+            h1 {
+                font-size: 6rem;
+                line-height: 1.2;
+                margin-bottom: 30px;
+            }
+            p {
+                margin-bottom: 50px;
+            }
+            button {
+                @include btn;
+                &:hover {
+                    @include btn-hover;
+                }
+            }
+        }
+        .col:last-child {
+            flex: 1;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+/***************
+New Arrivals
+***************/
+
+.newArrivals {
+    padding: $padding;
+    h2 {
+        font-size: 3rem;
+        padding-bottom: 50px;
+    }    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .col {
+            flex: 0 0 31.5%;
+            img {
+                width: 100%;
+                &:hover {
+                    transform: scale(1.1);
+                    transition: $transition;
+                }
+            }
+            h4 {
+                font-size: 1.4rem;
+                padding: 30px 0 10px 0;
+                text-align: center;
+                a {
+                    color: $gray;
+                    &:hover {
+                        color: $gray;
+                    }
+                }
+            }
+            p {
+                color: $red;
+                text-align: center;
+            }
+        }
+    }
+}
+
+/***************
+Watch
+***************/
+
+.watch {
+    padding: 50px 0 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+        width: 100%;
+    }
+    article:first-child {
+        flex: 0 0 49%;
+    }
+    article:nth-child(2) {
+        flex: 0 0 23%
+    }
+    article:last-child {
+        flex: 0 0 23%;
+        .row:first-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+/***************
+Popular
+***************/
+
+.popular {
+    padding: $padding;
+    text-align: center;
+    h2 {
+        font-size: 3rem;
+    }
+    p {
+        color: $gray;
+        padding-bottom: 50px;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .col {
+            flex: 0 0 31%;
+            margin-bottom: 20px;
+            text-align: center;
+            img {
+                width: 100%;
+                border-bottom: 3px solid $red;
+                margin-bottom: 10px;
+            }
+            h4 {
+                font-size: 1.5rem;
+                color: $gray;
+            }
+        }
+        button {
+            @include btn;
+            margin: auto;
+            &:hover {
+                @include btn-hover;
+            }
+        }
+    }
+}
+
+/***************
+Choice
+***************/
+
+.choice {
+    padding: 30px 0;
+    .row:first-child {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 100px;
+        .col:first-child {
+            @include flexCenter;
+            h2 {
+                font-size: 3.5rem;
+            }
+            p {
+                color: $gray;
+                padding-right: 150px;
+                padding-bottom: 70px;
+            }
+            button {
+                @include btn;
+                background-color: $red;
+                padding: 20px 30px;
+                &:hover {
+                    @include btn-hover;
+                    background-color: $gray;
+                }
+            }
+        }
+    }
+    .row:last-child {
+        display: flex;
+        justify-content: space-between;
+        .col:last-child {
+            @include flexCenter;
+            padding-left: 100px;
+            h2 {
+                font-size: 3.5rem;
+            }
+            p {
+                color: $gray;
+                padding-right: 150px;
+                padding-bottom: 70px;
+            }
+            button {
+                @include btn;
+                background-color: $red;
+                padding: 20px 30px;
+                &:hover {
+                    @include btn-hover;
+                    background-color: $gray;
+                }
+            }
+        }
+    }
+}
+
+/***************
+Secure
+***************/
+
+.secure {
+    margin: 100px auto;
+    padding: 40px;
+    background-color: $red;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    .col {
+        flex: 0 0 30%;
+        i {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        h4 {
+            font-size: 1.3rem;
+            font-family: $fontText;
+            margin-bottom: 15px;
+        }
+        p {
+            padding-right: 50px;
+            color: $lightGray;
+        }
+    }
+}
+
+/***************
+Footer
+***************/
+
+footer {
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    .col {
+        flex: 1;
+        img {
+            margin-bottom: 40px;
+        }
+        p {
+            color: $lightGray;
+        }
+        h4 {
+            font-size: 1.4rem;
+            font-family: $fontText;
+            margin-bottom: 30px;
+        }
+        ul {
+            line-height: 2.3;
+            a {
+                color: $lightGray;
+                &:hover {
+                    color: $red;
+                    transition: $transition;
+                }
+            }
+        }
+    }
+}
+
+/***************
+Bottom bar
+***************/
+
+.bottomBar {
+    padding: 50px 0 150px 0;
+    display: flex;
+    justify-content: space-between;
+    color: $gray;
+    .col:first-child {
+        i {
+            color: $red;
+        }
+        a {
+            color: $red;
+        }
+    }
+    .col:last-child {
+        a {
+            margin: 0 10px;
+            display: inline-block;
+            &:hover {
+                animation: move 2s 1;
+            }
+        }
+        @keyframes move {
+            0% {
+                transform: rotate(0deg);
+            }    
+            50% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
